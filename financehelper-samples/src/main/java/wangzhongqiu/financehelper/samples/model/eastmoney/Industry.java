@@ -12,12 +12,10 @@ import java.util.List;
 
 /**
  * Created by wangzhongqiu on 2017/9/12.
- * 有的时候，注解模式无法满足所有需求，我们可能还需要写代码完成一些事情，这个时候就要用到AfterExtractor接口了。
  */
 public class Industry {
     private String name;
     private String platform = "data.eastmoney.com";
-    @ExtractByUrl
     private String url = "";
 
     public Industry() {
