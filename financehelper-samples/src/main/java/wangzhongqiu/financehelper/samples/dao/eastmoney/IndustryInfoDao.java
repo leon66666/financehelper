@@ -9,6 +9,6 @@ import wangzhongqiu.financehelper.samples.model.eastmoney.IndustryInfo;
  */
 @Repository
 public interface IndustryInfoDao {
-    @Insert("insert into industry_info (`industry_name`,`rise`,`main`,`super`,`big`,`medium`,`small`,`total`,`date`) values (#{industryName},#{rise},#{main},#{super},#{big},#{medium},#{small},#{total},#{date})")
+    @Insert("insert into industry_info (`industry_name`,`rise`,`main`,`super`,`big`,`medium`,`small`,`total`,`date`) values (#{industryName},#{rise},#{main},#{super_},#{big},#{medium},#{small},#{total},#{date})")
     public int add(IndustryInfo industryInfo);
 }

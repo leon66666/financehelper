@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.PageModelPipeline;
+import us.codecraft.webmagic.pipeline.Pipeline;
 import wangzhongqiu.financehelper.samples.dao.eastmoney.IndustryInfoDao;
 import wangzhongqiu.financehelper.samples.model.eastmoney.IndustryInfo;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * Created by wangzhongqiu on 2017/9/13.
  */
 @Component("IndustryInfoPipeline")
-public class IndustryInfoPipeline implements PageModelPipeline<ResultItems> {
+public class IndustryInfoPipeline implements Pipeline {
     @Resource
     private IndustryInfoDao industryInfoDao;
 

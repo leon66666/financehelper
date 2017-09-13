@@ -4,18 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.processor.PageProcessor;
-import wangzhongqiu.financehelper.samples.model.EastMoneyHYInfoSample;
-import wangzhongqiu.financehelper.samples.model.eastmoney.Industry;
 import wangzhongqiu.financehelper.samples.model.eastmoney.IndustryInfo;
 import wangzhongqiu.financehelper.samples.pipeline.eastmoney.IndustryInfoPipeline;
-import wangzhongqiu.financehelper.samples.pipeline.eastmoney.IndustryPipeline;
-import wangzhongqiu.financehelper.samples.processor.HYInfoProcessorSample;
 import zhongqiu.javautils.DateUtil;
 import zhongqiu.javautils.JsonUtil;
 
@@ -27,8 +21,7 @@ import java.util.List;
 /**
  * Created by wangzhongqiu on 2017/9/13.
  */
-@Component
-public class IndustryInfoProcessor implements PageProcessor {
+public class IndustryInfoLocalProcessor implements PageProcessor {
     private static String AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36";
     private static String URL = "http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?cmd=C._BKHY&type=ct&sr=-1&ps=50&token=894050c76af8597a853f5b408b759f5d&sty=DCFFITABK&rt=50173371";
     private Site site = Site.me().setRetryTimes(3).setSleepTime(1000).setUserAgent(AGENT);
@@ -75,7 +68,7 @@ public class IndustryInfoProcessor implements PageProcessor {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/spring/applicationContext*.xml");
-        final IndustryInfoProcessor industryInfoProcessor = applicationContext.getBean(IndustryInfoProcessor.class);
-        industryInfoProcessor.crawl();
+        final IndustryInfoLocalProcessor industryInfoLocalProcessor = applicationContext.getBean(IndustryInfoLocalProcessor.class);
+        industryInfoLocalProcessor.crawl();
     }
 }
