@@ -33,6 +33,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.0.13</version>
+        </dependency>
+        <dependency>
             <groupId>us.codecraft</groupId>
             <version>0.4.3</version>
             <artifactId>webmagic-core</artifactId>
