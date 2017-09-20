@@ -12,6 +12,8 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.*;
 import org.springframework.stereotype.Component;
 import wangzhongqiu.financehelper.samples.dao.eastmoney.IndustryInfoDao;
@@ -19,6 +21,7 @@ import wangzhongqiu.financehelper.samples.model.eastmoney.IndustryInfo;
 import zhongqiu.javautils.DateUtil;
 
 import javax.annotation.Resource;
+import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -33,36 +36,36 @@ public class IndustryTimeSeriesChart {
     private IndustryInfoDao industryInfoDao;
 
     private XYDataset createDataset(List<String> industrys) {
-        TimeSeries timeseries = new TimeSeries("legal & general欧洲指数信任",
-                org.jfree.data.time.Month.class);
+        TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
         if (industrys != null) {
             for (String industry : industrys) {
+                TimeSeries timeseries = new TimeSeries(industry + "资金统计",
+                        org.jfree.data.time.Day.class);
                 List<IndustryInfo> industryInfos = industryInfoDao.get(industry);
                 if (industryInfos != null) {
                     for (IndustryInfo industryInfo : industryInfos) {
-                        timeseries.add(new Day(DateUtil.parse(String.valueOf(industryInfo.getDate()), DateUtil.DATE_PATTERN_DAY)), industryInfo.getTotal());
+                        timeseries.add(new Day(DateUtil.parse(String.valueOf(industryInfo.getDate()), DateUtil.DATE_FORMAT_DAY_SHORT)), industryInfo.getTotal() / 10000);
                     }
                 }
+                timeseriescollection.addSeries(timeseries);
             }
         }
-        TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
-        timeseriescollection.addSeries(timeseries);
         return timeseriescollection;
     }
 
     public ChartPanel getChartPanel(List<String> industrys) {
         XYDataset xydataset = createDataset(industrys);
-        JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("Legal & General单位信托基金价格", "日期", "价格", xydataset, true, true, true);
+        JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("行业资金流入流出", "日期(日/单位)", "价格(亿/单位)", xydataset, true, true, true);
         XYPlot xyplot = (XYPlot) jfreechart.getPlot();
         DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
-        dateaxis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"));
-        ChartPanel frame1 = new ChartPanel(jfreechart, true);
+        dateaxis.setDateFormatOverride(new SimpleDateFormat("yyyy-MM-dd"));
         dateaxis.setLabelFont(new Font("黑体", Font.BOLD, 14));         //水平底部标题
         dateaxis.setTickLabelFont(new Font("宋体", Font.BOLD, 12));  //垂直标题
         ValueAxis rangeAxis = xyplot.getRangeAxis();//获取柱状
         rangeAxis.setLabelFont(new Font("黑体", Font.BOLD, 15));
         jfreechart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));
         jfreechart.getTitle().setFont(new Font("宋体", Font.BOLD, 20));//设置标题字体
+        ChartPanel frame1 = new ChartPanel(jfreechart, true);
         return frame1;
     }
 }

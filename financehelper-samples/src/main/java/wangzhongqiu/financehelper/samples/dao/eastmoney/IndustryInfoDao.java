@@ -16,7 +16,7 @@ public interface IndustryInfoDao {
     public int add(IndustryInfo industryInfo);
 
     @Select("select * from industry_info where industry_name in(${industrys})")
-    public List<IndustryInfo> get(List<String> industrys);
+    public List<IndustryInfo> getByIndustrys(List<String> industrys);
 
     @Select("select * from industry_info where industry_name=#{industry} order by date asc")
     public List<IndustryInfo> get(String industry);
