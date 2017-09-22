@@ -36,6 +36,7 @@ public class IndustryTimeSeriesChart {
     private IndustryInfoDao industryInfoDao;
 
     private XYDataset createDataset(List<String> industrys) {
+        Double value = 0.0;
         TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
         if (industrys != null) {
             for (String industry : industrys) {
@@ -44,7 +45,8 @@ public class IndustryTimeSeriesChart {
                 List<IndustryInfo> industryInfos = industryInfoDao.get(industry);
                 if (industryInfos != null) {
                     for (IndustryInfo industryInfo : industryInfos) {
-                        timeseries.add(new Day(DateUtil.parse(String.valueOf(industryInfo.getDate()), DateUtil.DATE_FORMAT_DAY_SHORT)), industryInfo.getTotal() / 10000);
+                        value = value + industryInfo.getTotal() / 10000;
+                        timeseries.add(new Day(DateUtil.parse(String.valueOf(industryInfo.getDate()), DateUtil.DATE_FORMAT_DAY_SHORT)), value);
                     }
                 }
                 timeseriescollection.addSeries(timeseries);

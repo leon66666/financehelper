@@ -17,6 +17,7 @@ import zhongqiu.javautils.DateUtil;
 
 import javax.annotation.Resource;
 import java.awt.*;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class IndustryRiseChart {
     private IndustryInfoDao industryInfoDao;
 
     private XYDataset createDataset(List<String> industrys) {
+        BigDecimal value = new BigDecimal(0);
         TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
         if (industrys != null) {
             for (String industry : industrys) {
@@ -37,7 +39,9 @@ public class IndustryRiseChart {
                 List<IndustryInfo> industryInfos = industryInfoDao.get(industry);
                 if (industryInfos != null) {
                     for (IndustryInfo industryInfo : industryInfos) {
-                        timeseries.add(new Day(DateUtil.parse(String.valueOf(industryInfo.getDate()), DateUtil.DATE_FORMAT_DAY_SHORT)), industryInfo.getRise());
+                        if (industryInfo.getRise() != null)
+                            value = value.add(industryInfo.getRise());
+                        timeseries.add(new Day(DateUtil.parse(String.valueOf(industryInfo.getDate()), DateUtil.DATE_FORMAT_DAY_SHORT)), value);
                     }
                 }
                 timeseriescollection.addSeries(timeseries);
