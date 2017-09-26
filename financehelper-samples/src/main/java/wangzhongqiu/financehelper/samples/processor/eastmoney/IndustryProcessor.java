@@ -51,7 +51,7 @@ public class IndustryProcessor implements PageProcessor {
         List<Industry> industries = new ArrayList<Industry>();
         for (Object object : items) {
             String[] arr = object.toString().split(",");
-            industries.add(new Industry(arr[2]));
+            industries.add(new Industry(arr[2], arr[1]));
         }
         page.putField("industries", industries);
     }

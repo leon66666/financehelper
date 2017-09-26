@@ -1,5 +1,6 @@
 package wangzhongqiu.financehelper.samples.pipeline.eastmoney;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -27,7 +28,11 @@ public class IndustryInfoPipeline implements Pipeline {
                 try {
                     industryInfoDao.add(industryInfo);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    if (e instanceof DataIntegrityViolationException) {
+
+                    } else {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

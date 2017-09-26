@@ -18,6 +18,7 @@ public class IndustryInfo {
     private int small;
     private int total;
     private int date;
+    private String industryCode;
 
     public String getIndustryName() {
         return industryName;
@@ -97,5 +98,13 @@ public class IndustryInfo {
 
     public void setDate(int date) {
         this.date = date;
+    }
+
+    public String getIndustryCode() {
+        return industryCode;
+    }
+
+    public void setIndustryCode(String industryCode) {
+        this.industryCode = industryCode;
     }
 }

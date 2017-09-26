@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Repository
 public interface IndustryInfoDao {
-    @Insert("insert into industry_info (`industry_name`,`rise`,`main`,`super`,`big`,`medium`,`small`,`total`,`date`) values (#{industryName},#{rise},#{main},#{super_},#{big},#{medium},#{small},#{total},#{date})")
+    @Insert("insert into industry_info (`industry_name`,`rise`,`main`,`super`,`big`,`medium`,`small`,`total`,`date`,`industry_code`) values (#{industryName},#{rise},#{main},#{super_},#{big},#{medium},#{small},#{total},#{date},#{industryCode})")
     public int add(IndustryInfo industryInfo);
 
     @Select("select * from industry_info where industry_name in(${industrys})")

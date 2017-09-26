@@ -17,13 +17,15 @@ public class Industry {
     private String name;
     private String platform = "data.eastmoney.com";
     private String url = "";
+    private String code;
 
     public Industry() {
 
     }
 
-    public Industry(String name) {
+    public Industry(String name, String code) {
         this.name = name;
+        this.code = code;
     }
 
     public String getPlatform() {

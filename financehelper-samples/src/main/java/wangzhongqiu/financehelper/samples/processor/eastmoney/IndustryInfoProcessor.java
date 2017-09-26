@@ -60,7 +60,7 @@ public class IndustryInfoProcessor implements PageProcessor {
             String[] arr = object.toString().split(",");
             IndustryInfo industryInfo = new IndustryInfo();
             //// TODO: 2017/9/13 setIndustryId
-            targetUrls.add("http://data.eastmoney.com/bkzj/" + arr[1] + ".html");
+            industryInfo.setIndustryCode(arr[1]);
             industryInfo.setIndustryName(arr[2]);
             industryInfo.setRise(new BigDecimal(arr[3]));
             industryInfo.setMain(Integer.parseInt(arr[4].substring(0, arr[4].lastIndexOf("."))));

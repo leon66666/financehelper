@@ -9,6 +9,6 @@ import wangzhongqiu.financehelper.samples.model.eastmoney.Industry;
  */
 @Repository
 public interface IndustryDao {
-    @Insert("insert into industry (`name`,`platform`) values (#{name},#{platform})")
+    @Insert("insert into industry (`name`,`platform`,`code`) values (#{name},#{platform},#{code})")
     public int add(Industry industry);
 }
