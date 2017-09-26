@@ -24,7 +24,11 @@ public class IndustryInfoPipeline implements Pipeline {
         List<IndustryInfo> industryInfos = resultItems.get("industryInfos");
         if (industryInfos != null && industryInfos.size() > 0) {
             for (IndustryInfo industryInfo : industryInfos) {
-                industryInfoDao.add(industryInfo);
+                try {
+                    industryInfoDao.add(industryInfo);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
