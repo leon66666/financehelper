@@ -36,13 +36,13 @@ public class IndustryTimeSeriesChart {
     private IndustryInfoDao industryInfoDao;
 
     private XYDataset createDataset(List<String> industrys) {
-        Double value = 0.0;
         TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
         if (industrys != null) {
             for (String industry : industrys) {
                 TimeSeries timeseries = new TimeSeries(industry + "资金统计",
                         org.jfree.data.time.Day.class);
                 List<IndustryInfo> industryInfos = industryInfoDao.get(industry);
+                Double value = 0.0;
                 if (industryInfos != null) {
                     for (IndustryInfo industryInfo : industryInfos) {
                         value = value + industryInfo.getTotal() / 10000;

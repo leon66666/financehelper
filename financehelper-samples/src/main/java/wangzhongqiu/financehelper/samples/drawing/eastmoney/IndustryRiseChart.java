@@ -30,13 +30,13 @@ public class IndustryRiseChart {
     private IndustryInfoDao industryInfoDao;
 
     private XYDataset createDataset(List<String> industrys) {
-        BigDecimal value = new BigDecimal(0);
         TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
         if (industrys != null) {
             for (String industry : industrys) {
                 TimeSeries timeseries = new TimeSeries(industry + "涨跌统计",
                         org.jfree.data.time.Day.class);
                 List<IndustryInfo> industryInfos = industryInfoDao.get(industry);
+                BigDecimal value = new BigDecimal(0);
                 if (industryInfos != null) {
                     for (IndustryInfo industryInfo : industryInfos) {
                         if (industryInfo.getRise() != null)

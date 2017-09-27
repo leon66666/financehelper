@@ -25,9 +25,9 @@ public class DrawingTest {
         frame.setLayout(new GridLayout(2, 2, 10, 10));
         List<String> industrys = new ArrayList<String>();
         industrys.add("房地产");
-//        industrys.add("酿酒行业");
-//        industrys.add("有色金属");
-//        industrys.add("券商信托");
+        industrys.add("酿酒行业");
+        industrys.add("有色金属");
+        industrys.add("券商信托");
         frame.add(industryTimeSeriesChart.getChartPanel(industrys));
         frame.add(industryRiseChart.getChartPanel(industrys));
         frame.setBounds(50, 50, 800, 600);
