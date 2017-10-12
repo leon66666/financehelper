@@ -27,7 +27,9 @@ public class DrawingTest {
         industrys.add("房地产");
         industrys.add("酿酒行业");
         industrys.add("有色金属");
-        industrys.add("券商信托");
+        industrys.add("软件服务");
+        industrys.add("航天航空");
+        industrys.add("保险");
         frame.add(industryTimeSeriesChart.getChartPanel(industrys));
         frame.add(industryRiseChart.getChartPanel(industrys));
         frame.setBounds(50, 50, 800, 600);
