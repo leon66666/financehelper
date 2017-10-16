@@ -23,3 +23,25 @@ CREATE TABLE `industry_info` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_industry_id_date` (`industry_id`,`date`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=421 DEFAULT CHARSET=utf8;
+
+-- 测试表（content，info，watch）
+CREATE TABLE `content` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `content` longtext NOT NULL,
+  `addtime` datetime DEFAULT NULL,
+  `like_num` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+CREATE TABLE `info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `watch` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `watch_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
