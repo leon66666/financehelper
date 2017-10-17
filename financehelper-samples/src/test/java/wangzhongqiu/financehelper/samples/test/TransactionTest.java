@@ -2,7 +2,7 @@ package wangzhongqiu.financehelper.samples.test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import wangzhongqiu.financehelper.samples.Service.ContentService;
+import wangzhongqiu.financehelper.samples.service.ContentService;
 import wangzhongqiu.financehelper.samples.model.Content;
 
 import java.util.Date;

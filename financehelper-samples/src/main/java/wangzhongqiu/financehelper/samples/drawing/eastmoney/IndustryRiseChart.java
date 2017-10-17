@@ -39,8 +39,9 @@ public class IndustryRiseChart {
                 BigDecimal value = new BigDecimal(0);
                 if (industryInfos != null) {
                     for (IndustryInfo industryInfo : industryInfos) {
-                        if (industryInfo.getRise() != null)
+                        if (industryInfo.getRise() != null) {
                             value = value.add(industryInfo.getRise());
+                        }
                         timeseries.add(new Day(DateUtil.parse(String.valueOf(industryInfo.getDate()), DateUtil.DATE_FORMAT_DAY_SHORT)), value);
                     }
                 }
