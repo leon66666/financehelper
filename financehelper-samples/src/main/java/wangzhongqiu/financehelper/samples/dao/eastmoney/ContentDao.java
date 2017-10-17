@@ -23,5 +23,5 @@ public interface ContentDao {
     public List<Content> get(Integer userId);
 
     @Update("update content set like_num=#{likeNum} where id=#{id}")
-    public void updateT(Content content);
+    public void update(Content content);
 }
