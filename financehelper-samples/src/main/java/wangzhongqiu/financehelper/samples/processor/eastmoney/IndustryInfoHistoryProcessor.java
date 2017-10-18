@@ -81,7 +81,7 @@ public class IndustryInfoHistoryProcessor implements PageProcessor {
                 industryInfo.setSmall(parse(contentList.get(contengListIndex)));
                 contengListIndex = contengListIndex + 2;
                 industryInfo.setTotal(industryInfo.getMain() + industryInfo.getSuper_() + industryInfo.getBig() + industryInfo.getMedium() + industryInfo.getSmall());
-                if (industryInfo.getDate() == 20171010) {
+                if (industryInfo.getDate() == 20171013) {
                     industryInfos.add(industryInfo);
                 }
             }
