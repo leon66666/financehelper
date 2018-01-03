@@ -24,12 +24,12 @@ public class DrawingTest {
         JFrame frame = new JFrame("数据统计图");
         frame.setLayout(new GridLayout(2, 2, 10, 10));
         List<String> industrys = new ArrayList<String>();
-        industrys.add("房地产");
-        industrys.add("酿酒行业");
+        industrys.add("券商信托");
+        industrys.add("煤炭采选");
         industrys.add("有色金属");
-        industrys.add("软件服务");
         industrys.add("航天航空");
-        industrys.add("保险");
+//        industrys.add("保险");
+//        industrys.add("软件服务");
         frame.add(industryTimeSeriesChart.getChartPanel(industrys));
         frame.add(industryRiseChart.getChartPanel(industrys));
         frame.setBounds(50, 50, 800, 600);
